@@ -22,9 +22,12 @@ public class MyStepdefs {
 
     WebDriver driver;
     String url;
+    HomePageObject homePageObject;
+    NewUserPageObject newUserPageObject;
+    ConfirmUserPageObject confirmUserPageObject;
 
-//scenario hooks
-    @Before("@vodqa")
+
+    @Before
     public void beforeScenario() {
         driver=new FirefoxDriver();
         url = "http://bdt-registration.herokuapp.com/users";
@@ -38,99 +41,84 @@ public class MyStepdefs {
     @Then("^I click on new user link$")
     public NewUserPageObject I_click_on_new_user_link() throws Throwable {
 
-        HomePageObject homePageObject = new HomePageObject(driver);
+        homePageObject = new HomePageObject(driver);
         homePageObject.clickOnNewUserLink();
         return new NewUserPageObject(driver);
     }
 
     @And("^enter user first name as \"([^\"]*)\"$")
     public void enter_user_first_name_as(String firstName) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setFirstName(firstName);
     }
 
     @And("^enter user last name as \"([^\"]*)\"$")
     public void enter_user_last_name_as(String lastName) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setLastName(lastName);
     }
 
     @And("^enter user email id as \"([^\"]*)\"$")
     public void enter_user_email_id_as(String email) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setEmailAddress(email);
     }
 
     @And("^enter user username as \"([^\"]*)\"$")
     public void enter_user_username_as(String username) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setUsername(username);
     }
 
     @And("^enter user password as \"([^\"]*)\"$")
     public void enter_user_password_as(String password) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setPassword(password);
     }
 
     @And("^enter user phone as \"([^\"]*)\"$")
     public void enter_user_phone_as(String phone) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setPhone(phone);
     }
 
     @And("^enter user address as \"([^\"]*)\"$")
     public void enter_user_address_as(String address) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setAddress(address);
     }
 
     @And("^enter user postcode as \"([^\"]*)\"$")
     public void enter_user_postcode_as(String postcode) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setPostcode(postcode);
     }
 
     @And("^enter user year of dob as \"([^\"]*)\"$")
     public void enter_user_year_of_dob_as(String dobyear) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setDobYear(dobyear);
     }
 
     @And("^enter user month of dob as \"([^\"]*)\"$")
     public void enter_user_month_of_dob_as(String dobmonth) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setDobMonth(dobmonth);
     }
 
     @And("^enter user day of dob as \"([^\"]*)\"$")
     public void enter_user_day_of_dob_as(String dobDay) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setDobDay(dobDay);
     }
 
     @And("^enter user sex as \"([^\"]*)\"$")
     public void enter_user_sex_as(String sex) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setSex(sex);
     }
 
     @And("^enter user comments as \"([^\"]*)\"$")
     public void enter_user_comments_as(String comments) throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.setComments(comments);
     }
 
     @And("^click create user button$")
     public ConfirmUserPageObject click_create_user_button() throws Throwable {
-        NewUserPageObject newUserPageObject = new NewUserPageObject(driver);
         newUserPageObject.clickCreateUserButton();
         return new ConfirmUserPageObject(driver);
     }
 
     @Then("^verify user is on confirm page$")
     public void verify_user_is_on_confirm_page() throws Throwable {
-        ConfirmUserPageObject confirmUserPageObject = new ConfirmUserPageObject(driver);
         confirmUserPageObject.getSuccessMessage();
     }
 
@@ -149,8 +137,7 @@ public class MyStepdefs {
         newUserPageObject.setComments(data.get(8));
     }
 
-//scenario hooks
-    @After("@vodqa")
+    @After
     public void afterScenario() {
         driver.close();
         driver.quit();

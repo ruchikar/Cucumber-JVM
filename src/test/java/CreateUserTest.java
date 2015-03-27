@@ -20,7 +20,7 @@ public class CreateUserTest {
     }
 
 
-    @Test
+    //@Test
     public void verifyHomePage() {
 
         HomePageObject homePageObject = new HomePageObject(driver);

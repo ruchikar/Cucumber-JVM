@@ -1,5 +1,6 @@
-Feature: Simple feature file
+Feature: simple feature file
 
+  @Smoke
   Scenario: creating new user
     Given I am in users page
     Then I click on new user link
